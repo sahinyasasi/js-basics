@@ -6,6 +6,8 @@ console.log("jonas");
 //console.log("jonas");
 let firstname = "nick";
 console.log(firstname);
+/*let firstname = "nick";
+console.log(firstname);*/
 let $function = 27;
 let danger = 'danger';
 console.log(true);
