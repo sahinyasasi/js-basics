@@ -39,3 +39,9 @@ console.log(x);
 x--;
 console.log(x);
 console.log(ageJonas > agesarah);
+const kit = `I'm ${firstName}`;
+console.log(kit);
+console.log('hi \n\ how are you \n\ madam');
+console.log(`hi 
+ how are you 
+ madam`);
