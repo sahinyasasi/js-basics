@@ -45,3 +45,20 @@ console.log('hi \n\ how are you \n\ madam');
 console.log(`hi 
  how are you 
  madam`);
+const age = 16;
+const isOldEnough = age >= 18;
+if (isOldEnough) {
+    console.log('can have driving license');
+} else {
+    const yearsLeft = 18 - age;
+    console.log(`wait for another ${yearsLeft}years`);
+
+}
+const birthYear = 1999;
+let century;
+if (birthYear <= 2000) {
+    century = 20;
+} else {
+    century = 21;
+}
+console.log(century);
