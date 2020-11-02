@@ -96,3 +96,13 @@ if (height) {
 } else {
     console.log(undefined);
 }
+
+const agee = 18;
+if (agee === 18) console.log("u are an adult strict");
+if (agee == 18) console.log("u are an adult");
+if (agee === '18') console.log("u are an adult strict");
+if (agee == '18') console.log("u are an adult");
+let fav = Number(prompt('whats ut fav num??'));
+console.log(fav);
+console.log(typeof fav);
+if (fav !== 23) console.log("its cool");
