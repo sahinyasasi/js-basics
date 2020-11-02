@@ -17,3 +17,8 @@ console.log(typeof javaScriptFun);
 console.log(typeof true);
 console.log(typeof 23);
 console.log(typeof 'string');
+javaScriptFun = "yes";
+console.log(typeof javaScriptFun);
+let year;
+console.log(year);
+console.log(typeof null);
