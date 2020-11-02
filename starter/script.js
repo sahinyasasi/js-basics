@@ -11,3 +11,9 @@ console.log(firstname);*/
 let $function = 27;
 let danger = 'danger';
 console.log(true);
+let javaScriptFun = true;
+console.log(javaScriptFun);
+console.log(typeof javaScriptFun);
+console.log(typeof true);
+console.log(typeof 23);
+console.log(typeof 'string');
