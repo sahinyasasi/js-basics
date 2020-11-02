@@ -62,3 +62,13 @@ if (birthYear <= 2000) {
     century = 21;
 }
 console.log(century);
+const inputYear = '1991';
+console.log(inputYear + 18);
+console.log(Number(inputYear) + 18);
+console.log(Number('value'));
+console.log(typeof(NaN));
+console.log(String(23), 23);
+console.log(23 + '3');
+console.log('23' - 3);
+console.log('23' / '2');
+console.log('23' > '18');
