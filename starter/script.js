@@ -72,3 +72,27 @@ console.log(23 + '3');
 console.log('23' - 3);
 console.log('23' / '2');
 console.log('23' > '18');
+console.log(Boolean(0));
+console.log(Boolean('string'));
+console.log(Boolean(' '));
+console.log(Boolean({}));
+console.log(Boolean(undefined));
+const money = 0;
+if (money) {
+    console.log("dont spend money");
+} else {
+    console.log("spend money");
+}
+
+const moneyy = 10;
+if (moneyy) {
+    console.log("dont spend moneyy");
+} else {
+    console.log("spend moneyy");
+}
+let height;
+if (height) {
+    console.log(defined);
+} else {
+    console.log(undefined);
+}
