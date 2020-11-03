@@ -29,3 +29,10 @@ const clas = function(age) {
 }
 const birthyear2 = clas(19);
 console.log(birthyear2);
+const clas2 = age => 2037 - age;
+const clas3 = clas2(19);
+console.log(clas3);
+const yearsRetirment = age => {
+    const birthyear = 2037 - age;
+    const retire = 65 - age;
+}
