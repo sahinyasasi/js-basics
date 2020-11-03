@@ -18,3 +18,14 @@ function fruit(apples, oranges) {
     return juice;
 }
 const xyz = console.log(fruit(3, 0));
+
+function clasAge(age) {
+    return 2037 - age;
+}
+const birthyear = clasAge(19);
+console.log(birthyear);
+const clas = function(age) {
+    return 2037 - age;
+}
+const birthyear2 = clas(19);
+console.log(birthyear2);
