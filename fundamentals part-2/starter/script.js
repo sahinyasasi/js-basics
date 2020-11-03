@@ -129,3 +129,15 @@ jonas.location = "junctiion";
 jonas['pin'] = 521105;
 console.log(jonas);
 console.log(`${jonas.firstName}has ${jonas.nus.length}bestfriends`);
+const jona = {
+    firstName: "jonas",
+    lastName: "schemat",
+    year: 2013,
+    nus: ['hi', 'hello'],
+    age: function(year) {
+        return 2037 - this.year;
+
+    }
+};
+console.log(jona.age(2000));
+console.log(jona['age'](2000));
