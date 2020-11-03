@@ -113,5 +113,19 @@ const jonas = {
     year: 2013,
     nus: ['hi', 'hello']
 };
-console.log(jonas);
+console.log(jonas.year);
+console.log(jonas["firstName"]);
 console.log(jonasArray);
+const namekey = "Name";
+console.log(jonas['first' + namekey]);
+console.log(jonas['last' + namekey]);
+const intrest = prompt("waht are u intrested in");
+if (jonas[intrest]) {
+    console.log(jonas[intrest]);
+} else {
+    console.log("not valid qsn");
+}
+jonas.location = "junctiion";
+jonas['pin'] = 521105;
+console.log(jonas);
+console.log(`${jonas.firstName}has ${jonas.nus.length}bestfriends`);
