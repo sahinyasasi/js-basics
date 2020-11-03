@@ -141,3 +141,6 @@ const jona = {
 };
 console.log(jona.age(2000));
 console.log(jona['age'](2000));
+for (let rep = 1; rep <= 10; rep++) {
+    console.log(`do it ${rep}times`);
+}
