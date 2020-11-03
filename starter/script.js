@@ -106,3 +106,8 @@ let fav = Number(prompt('whats ut fav num??'));
 console.log(fav);
 console.log(typeof fav);
 if (fav !== 23) console.log("its cool");
+const hasDriversLicense = true;
+const hasGoodVision = false;
+console.log(hasDriversLicense && hasGoodVision);
+console.log(hasDriversLicense || hasGoodVision);
+console.log(!hasDriversLicense);
