@@ -111,3 +111,14 @@ const hasGoodVision = false;
 console.log(hasDriversLicense && hasGoodVision);
 console.log(hasDriversLicense || hasGoodVision);
 console.log(!hasDriversLicense);
+const day = 'monday';
+switch (day) {
+    case 'monday':
+        console.log(day);
+        break;
+    case 'tuesday':
+        console.log(day);
+        break;
+    default:
+        console.log("not a valid day");
+}
