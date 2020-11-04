@@ -179,3 +179,29 @@ for (let i = 0; i < names.length; i++) {
     console.log(names[i], typeof names[i]);
 
 }
+
+for (let i = names.length - 1; i >= 0; i--) {
+    console.log(names[i], i);
+}
+
+for (let exer = 1; exer < 4; exer++) {
+
+    for (let it = 1; it < 6; it++) {
+        console.log(`doing exercise${exer} for ${it}time`);
+    }
+}
+
+let x = 1;
+while (x < 5) {
+    console.log(`hi how are u???${x}`);
+    x++;
+}
+
+
+let dice = Math.trunc(Math.random() * 6) + 1;
+
+while (dice !== 6) {
+    console.log(`You rolled a ${dice}`);
+    dice = Math.trunc(Math.random() * 6) + 1;
+    if (dice === 6) console.log('Loop is about to end...');
+}
