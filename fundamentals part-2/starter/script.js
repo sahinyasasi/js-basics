@@ -1,5 +1,5 @@
 'use strict';
-let hasDriverslicense = false;
+/*slet hasDriverslicense = false;
 const passTest = true;
 if (passTest) hasDriverslicense = true;
 if (hasDriverslicense) console.log('i can drive');
@@ -143,4 +143,39 @@ console.log(jona.age(2000));
 console.log(jona['age'](2000));
 for (let rep = 1; rep <= 10; rep++) {
     console.log(`do it ${rep}times`);
+}
+for (let i = 0; i < jona.length; i++) {
+    console.log(jona.nus[i]);
+}
+let myArray = ["one", "two", "three", "four"];
+for (let i = 0; i < myArray.length; i++) {
+    console.log(myArray[i]);
+}
+
+let names = ["hi", true, 1, "wtsup"];
+let names1 = [];
+for (let i = 0; i < names.length; i++) {
+    console.log(names[i], typeof names[i]);
+    // names1[i] = typeof names[i];
+    names1.push(typeof names[i]);
+}
+console.log(names1);*/
+let old = [1999, 2000, 2001];
+let aGE = [];
+for (let index = 0; index < old.length; index++) {
+    aGE.push(2037 - old[index]);
+
+}
+console.log(aGE);
+let names = ["hi", true, 1, "wtsup"];
+
+for (let i = 0; i < names.length; i++) {
+    if (typeof names[i] !== "string") continue;
+    console.log(names[i], typeof names[i]);
+
+}
+for (let i = 0; i < names.length; i++) {
+    if (typeof names[i] === "number") break;
+    console.log(names[i], typeof names[i]);
+
 }
