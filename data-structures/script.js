@@ -94,3 +94,5 @@ if (restaurant.ordering) {
     restaurant.ordering('me', 'you');
 }
 restaurant.ordering && restaurant.ordering('me', 'you');
+const menus = [...restaurant.mainMenu, ...restaurant.starterMenu];
+for (const item of menus) console.log(item);
