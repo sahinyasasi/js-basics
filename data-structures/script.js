@@ -26,6 +26,10 @@ const restaurant = {
     orderPasta: function(ing1, ing2, ing3) {
         console.log(`hey here ypour ${ing2}and ${ing3}`);
     },
+    ordering: function(mainmenu, ...others) {
+        console.log(mainmenu);
+        console.log(others);
+    },
 };
 const arr = [2, 3, 4];
 const [x, y, z] = arr;
@@ -74,3 +78,11 @@ console.log(ingredient);*/
 //restaurant.orderPasta(ingredient[0], ingredient[1], ingredient[2]);
 const newrestarunt = {...restaurant, founder: 'me' };
 console.log(newrestarunt);
+const [pizza, rose, ...otherfood] = [
+    ...restaurant.mainMenu,
+    ...restaurant.starterMenu,
+];
+console.log(pizza, rose, otherfood);
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+restaurant.ordering('pizza', 'menu', 'you');
