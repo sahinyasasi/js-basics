@@ -86,3 +86,11 @@ console.log(pizza, rose, otherfood);
 const { sat, ...weekdays } = restaurant.openingHours;
 console.log(weekdays);
 restaurant.ordering('pizza', 'menu', 'you');
+//restaurant.numguests = 23;
+const guests = restaurant.numguests ? restaurant.numguests : 10;
+console.log(guests);
+console.log(restaurant.numguests || 10);
+if (restaurant.ordering) {
+    restaurant.ordering('me', 'you');
+}
+restaurant.ordering && restaurant.ordering('me', 'you');
