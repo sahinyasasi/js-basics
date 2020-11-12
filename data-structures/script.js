@@ -1,5 +1,5 @@
 'use strict';
-/*const hours1 = {
+const hours1 = {
     thu: {
         open: 12,
         close: 22,
@@ -32,7 +32,7 @@ const restaurant = {
             close: 23,
         },
         sat: {
-            open: 0, // Open 24 hours
+            open: 0,
             close: 24,
         },
     },
@@ -45,6 +45,7 @@ const restaurant = {
     },
     hours1,
 };
+/*
 const arr = [2, 3, 4];
 const [x, y, z] = arr;
 console.log(x, y, z);
@@ -122,3 +123,39 @@ console.log(orderSet);
 const staff = ['waiter', 'chef', 'waiter'];
 const unique = [...new Set(staff)];
 console.log(unique);
+const rest = new Map();
+rest.set('name', 'kittu');
+rest.set(1, 'kittu');
+rest.set(2, 'gotti');
+
+rest
+    .set('categories', ['hi', 'hello', 'you'])
+    .set('me', 'hi')
+    .set('mes', 'you');
+console.log(rest);
+console.log(rest.get('me'));
+const arr = [1, 2];
+rest.set(arr, 'test');
+console.log(rest.get(arr));
+const question = new Map([
+    ['question', 'What is the best programming language in the world?'],
+    [1, 'C'],
+    [2, 'Java'],
+    [3, 'JavaScript'],
+    ['correct', 3],
+    [true, 'Correct 🎉'],
+    [false, 'Try again!'],
+]);
+console.log(question);
+console.log(Object.entries(hours1));
+const hoursMap = new Map(Object.entries(hours1));
+console.log(hoursMap);
+console.log(question.get('question'));
+for (const [key, value] of question) {
+    if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
+//const answer = Number(prompt('Your answer'));
+const answer = 3;
+console.log(answer);
+
+console.log(question.get(question.get('correct') === answer));
