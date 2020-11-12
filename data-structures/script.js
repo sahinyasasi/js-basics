@@ -1,5 +1,5 @@
 'use strict';
-const hours1 = {
+/*const hours1 = {
     thu: {
         open: 12,
         close: 22,
@@ -90,7 +90,7 @@ console.log(newmenu);
 console.log(ingredient);*/
 //restaurant.orderPasta(...ingredient);
 //restaurant.orderPasta(ingredient[0], ingredient[1], ingredient[2]);
-const newrestarunt = {...restaurant, founder: 'me' };
+/*const newrestarunt = {...restaurant, founder: 'me' };
 console.log(newrestarunt);
 const [pizza, rose, ...otherfood] = [
     ...restaurant.mainMenu,
@@ -110,4 +110,15 @@ if (restaurant.ordering) {
 restaurant.ordering && restaurant.ordering('me', 'you');
 const menus = [...restaurant.mainMenu, ...restaurant.starterMenu];
 for (const item of menus) console.log(item);
-console.log(restaurant);
+console.log(restaurant);*/
+const orderSet = new Set(['hi', 'hello', 'hi']);
+console.log(orderSet);
+console.log(new Set('string'));
+console.log(orderSet.size);
+console.log(orderSet.has('hi'));
+orderSet.add('me');
+orderSet.delete('hi');
+console.log(orderSet);
+const staff = ['waiter', 'chef', 'waiter'];
+const unique = [...new Set(staff)];
+console.log(unique);
