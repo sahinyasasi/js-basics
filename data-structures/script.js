@@ -1,5 +1,18 @@
 'use strict';
-
+const hours1 = {
+    thu: {
+        open: 12,
+        close: 22,
+    },
+    fri: {
+        open: 11,
+        close: 23,
+    },
+    sat: {
+        open: 0, // Open 24 hours
+        close: 24,
+    },
+};
 const restaurant = {
     name: 'Classico Italiano',
     location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -30,6 +43,7 @@ const restaurant = {
         console.log(mainmenu);
         console.log(others);
     },
+    hours1,
 };
 const arr = [2, 3, 4];
 const [x, y, z] = arr;
@@ -96,3 +110,4 @@ if (restaurant.ordering) {
 restaurant.ordering && restaurant.ordering('me', 'you');
 const menus = [...restaurant.mainMenu, ...restaurant.starterMenu];
 for (const item of menus) console.log(item);
+console.log(restaurant);
