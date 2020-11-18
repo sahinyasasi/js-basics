@@ -6,31 +6,31 @@
 
 // Data
 const account1 = {
-  owner: 'Jonas Schmedtmann',
-  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
-  interestRate: 1.2, // %
-  pin: 1111,
+    owner: 'Jonas Schmedtmann',
+    movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+    interestRate: 1.2, // %
+    pin: 1111,
 };
 
 const account2 = {
-  owner: 'Jessica Davis',
-  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
-  interestRate: 1.5,
-  pin: 2222,
+    owner: 'Jessica Davis',
+    movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+    interestRate: 1.5,
+    pin: 2222,
 };
 
 const account3 = {
-  owner: 'Steven Thomas Williams',
-  movements: [200, -200, 340, -300, -20, 50, 400, -460],
-  interestRate: 0.7,
-  pin: 3333,
+    owner: 'Steven Thomas Williams',
+    movements: [200, -200, 340, -300, -20, 50, 400, -460],
+    interestRate: 0.7,
+    pin: 3333,
 };
 
 const account4 = {
-  owner: 'Sarah Smith',
-  movements: [430, 1000, 700, 50, 90],
-  interestRate: 1,
-  pin: 4444,
+    owner: 'Sarah Smith',
+    movements: [430, 1000, 700, 50, 90],
+    interestRate: 1,
+    pin: 4444,
 };
 
 const accounts = [account1, account2, account3, account4];
@@ -61,51 +61,152 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const calPrintBalance = function(movements) {
+    const balance = movements.reduce((acc, value) => acc + value, 0);
+    labelBalance.textContent = `${balance}EUR`;
+};
+calPrintBalance(account1.movements);
+
+const displayMovements = function(movements) {
+    (containerMovements.innerHTML = ''),
+    movements.forEach(function(mov, i) {
+        const type = mov > 0 ? 'deposit' : 'withdrawal';
+        const html = `<div class="movements__row"> 
+                <div class = "movements__type movements__type--${type}" > ${
+        i + 1
+      }
+            ${type} </div> <
+            div class = "movements__date" > "3 days ago" </div> 
+                <div class = "movements__value" > ${mov} EUR</div> 
+               </div>`;
+        containerMovements.insertAdjacentHTML('afterbegin', html);
+    });
+};
+const calDisplaySummary = function(movements) {
+    const incomes = movements
+        .filter(mov => mov > 0)
+        .reduce((acc, mov) => acc + mov, 0);
+    labelSumIn.textContent = `${incomes}EUR`;
+
+    const outs = movements
+        .filter(mov => mov < 0)
+        .reduce((acc, mov) => acc + mov, 0);
+    labelSumOut.textContent = `${Math.abs(outs)}EUR`;
+    const intrest = movements
+        .filter(mov => mov > 0)
+        .map(deposit => (deposit * 1.2) / 100)
+        .filter((int, i, arr) => int >= 1)
+        .reduce((acc, int) => acc + int, 0);
+    labelSumInterest.textContent = `${intrest}EUR`;
+};
+calDisplaySummary(account1.movements);
+btnLogin.addEventListener('click', function(e) {
+    e.preventDefault();
+    console.log('login');
+});
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
 /////////////////////////////////////////////////
 /*let arrr = ['a', 'b', 'c', 'd', 'f'];
-console.log(arrr.slice(2));
-console.log(arrr.slice(1, -1));
-console.log(arrr.splice(2));
-console.log(arrr.splice(-2));
-console.log(arrr);
-const arrr2 = ['h', 'j', 'g', 'i', 'k'];
-console.log(arrr2.reverse());
-console.log(arrr2);*/
+        console.log(arrr.slice(2));
+        console.log(arrr.slice(1, -1));
+        console.log(arrr.splice(2));
+        console.log(arrr.splice(-2));
+        console.log(arrr);
+        const arrr2 = ['h', 'j', 'g', 'i', 'k'];
+        console.log(arrr2.reverse());
+        console.log(arrr2);*/
 /*const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-movements.forEach(function (movement) {
-  if (movement > 0) {
-    console.log(`u have deposited ${movement}`);
-  } else {
-    console.log(`u have withdrew ${Math.abs(movement)}`);
-  }
-});
+        movements.forEach(function (movement) {
+          if (movement > 0) {
+            console.log(`u have deposited ${movement}`);
+          } else {
+            console.log(`u have withdrew ${Math.abs(movement)}`);
+          }
+        });
 
-// for (const movement of movements) {
-for (const [i, movement] of movements.entries()) {
-  if (movement > 0) {
-    console.log(`Movement ${i + 1}: You deposited ${movement}`);
-  } else {
-    console.log(`Movement ${i + 1}: You withdrew ${Math.abs(movement)}`);
-  }
-}
-console.log('---- FOREACH ----');
-movements.forEach(function (mov, i, arr) {
-  if (mov > 0) {
-    console.log(`Movement ${i + 1}: You deposited ${mov}`);
-  } else {
-    console.log(`Movement ${i + 1}: You withdrew ${Math.abs(mov)}`);
-  }
-});*/
+        // for (const movement of movements) {
+        for (const [i, movement] of movements.entries()) {
+          if (movement > 0) {
+            console.log(`Movement ${i + 1}: You deposited ${movement}`);
+          } else {
+            console.log(`Movement ${i + 1}: You withdrew ${Math.abs(movement)}`);
+          }
+        }
+        console.log('---- FOREACH ----');
+        movements.forEach(function (mov, i, arr) {
+          if (mov > 0) {
+            console.log(`Movement ${i + 1}: You deposited ${mov}`);
+          } else {
+            console.log(`Movement ${i + 1}: You withdrew ${Math.abs(mov)}`);
+          }
+        });
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
-currencies.forEach(function (value, key, Map) {
-  console.log(`${key}:${value}`);
+        const currencies = new Map([
+          ['USD', 'United States dollar'],
+          ['EUR', 'Euro'],
+          ['GBP', 'Pound sterling'],
+        ]);
+        currencies.forEach(function (value, key, Map) {
+          console.log(`${key}:${value}`);
+        });*/
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+displayMovements(account1.movements);
+const eurToUsd = 1.1;
+const movementsUsd = movements.map(function(mov) {
+    return mov * eurToUsd;
 });
+console.log(movements);
+console.log(movementsUsd);
+
+const movementsDescriptions = movements.map(
+    (mov, i) =>
+    `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
+      mov
+    )}`
+);
+console.log(movementsDescriptions);
+const createUserNames = function(accs) {
+    accs.forEach(function(acc) {
+        acc.userName = acc.owner
+            .toLowerCase()
+            .split(' ')
+            .map(
+                name => name[0] //function(name) {
+                //return name[0];}
+            )
+            .join('');
+    });
+};
+createUserNames(accounts);
+console.log(accounts);
+const deposits = movements.filter(function(mov) {
+    return mov > 0;
+});
+const depositsFor = [];
+for (const mov of movements)
+    if (mov > 0) depositsFor.push(mov);
+console.log(depositsFor);
+console.log(movements);
+console.log(deposits);
+const withdrawals = movements.filter(function(mov) {
+    return mov < 0;
+});
+console.log(withdrawals);
+const balance = movements.reduce(function(acc, value, i, arr) {
+    return acc + value;
+}, 0);
+console.log(balance);
+const totalDeposits = movements
+    .filter(mov => mov > 0)
+    .map(mov => mov * eurToUsd)
+    .reduce((acc, mov) => acc + mov, 0);
+console.log(totalDeposits);
+const firstWithDrawal = movements.find(mov => mov < 0);
+console.log(firstWithDrawal);
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
