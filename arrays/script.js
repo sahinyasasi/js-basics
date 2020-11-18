@@ -65,7 +65,6 @@ const calPrintBalance = function(movements) {
     const balance = movements.reduce((acc, value) => acc + value, 0);
     labelBalance.textContent = `${balance}EUR`;
 };
-calPrintBalance(account1.movements);
 
 const displayMovements = function(movements) {
     (containerMovements.innerHTML = ''),
@@ -82,29 +81,54 @@ const displayMovements = function(movements) {
         containerMovements.insertAdjacentHTML('afterbegin', html);
     });
 };
-const calDisplaySummary = function(movements) {
-    const incomes = movements
+const calDisplaySummary = function(accs) {
+    const incomes = accs.movements
         .filter(mov => mov > 0)
         .reduce((acc, mov) => acc + mov, 0);
     labelSumIn.textContent = `${incomes}EUR`;
 
-    const outs = movements
+    const outs = accs.movements
         .filter(mov => mov < 0)
         .reduce((acc, mov) => acc + mov, 0);
     labelSumOut.textContent = `${Math.abs(outs)}EUR`;
-    const intrest = movements
+    const intrest = accs.movements
         .filter(mov => mov > 0)
-        .map(deposit => (deposit * 1.2) / 100)
+        .map(deposit => (deposit * accs.interestRate) / 100)
         .filter((int, i, arr) => int >= 1)
         .reduce((acc, int) => acc + int, 0);
     labelSumInterest.textContent = `${intrest}EUR`;
 };
-calDisplaySummary(account1.movements);
+
+let currentAccount;
 btnLogin.addEventListener('click', function(e) {
     e.preventDefault();
-    console.log('login');
+    currentAccount = accounts.find(
+        acc => acc.userName === inputLoginUsername.value
+    );
+
+    console.log(currentAccount);
+    if (currentAccount && currentAccount.pin === Number(inputLoginPin.value)) {
+        labelWelcome.textContent = `welcome back ${
+      currentAccount.owner.split(' ')[0]
+    }`;
+        containerApp.getElementsByClassName.opacity = 100;
+    }
+    displayMovements(currentAccount.movements);
+    calPrintBalance(currentAccount.movements);
+    calDisplaySummary(currentAccount);
+    inputLoginUsername.value = inputLoginPin.value = '';
 });
 
+btnTransfer.addEventListener('click', function(e) {
+    e.preventDefault();
+    const amount = Number(inputTransferAmount.value);
+
+    const receiverAcc = accounts.find(
+        acc => acc.username === inputTransferTo.value
+    );
+
+    console.log(amount, receiverAcc);
+});
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -155,7 +179,7 @@ btnLogin.addEventListener('click', function(e) {
         });*/
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-displayMovements(account1.movements);
+
 const eurToUsd = 1.1;
 const movementsUsd = movements.map(function(mov) {
     return mov * eurToUsd;
