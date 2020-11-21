@@ -7,6 +7,8 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
 
 const openModal = function(e) {
     e.preventDefault();
@@ -78,7 +80,7 @@ console.log(getComputedStyle(message).height);
 message.style.height =
     Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
 
-document.documentElement.style.setProperty('--color-primary', 'orangered');
+//document.documentElement.style.setProperty('--color-primary', 'orangered');
 
 // Attributes
 const logo = document.querySelector('.nav__logo');
@@ -110,3 +112,38 @@ logo.classList.contains('c'); // not includes
 
 // Don't use
 logo.clasName = 'jonas';
+
+btnScrollTo.addEventListener('click', function(e) {
+    const s1coords = section1.getBoundingClientRect();
+    console.log(s1coords); //form top of viewport
+    console.log(e.target.getBoundingClientRect());
+    console.log(window.pageXOffset, window.pageYOffset); //from top of window
+    console.log(
+        document.documentElement.clientHeight,
+        document.documentElement.clientWidth
+    );
+    // window.scrollTo(
+    //   s1coords.left + window.pageXOffset,
+    //  s1coords.top + window.pageYOffset
+    //);
+
+    // window.scrollTo({
+    //  left: s1coords.left + window.pageXOffset,
+    // top: s1coords.top + window.pageYOffset,
+    // behavior: 'smooth',
+    //});
+    section1.scrollIntoView({ behavior: 'smooth' });
+});
+const h1 = document.querySelector('h1');
+const alertH1 = function(e) {
+    alert('addeventlistener:hey hi:)');
+};
+h1.addEventListener('mouseenter', alertH1);
+
+setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
+
+// h1.onmouseenter = function (e) {
+//   alert('onmouseenter: Great! You are reading the heading :D');
+// };
+
+//<h1 onclick="alert('HTML alert')">
