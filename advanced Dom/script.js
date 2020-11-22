@@ -31,6 +31,51 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
+btnScrollTo.addEventListener('click', function(e) {
+    const s1coords = section1.getBoundingClientRect();
+    console.log(s1coords); //form top of viewport
+    console.log(e.target.getBoundingClientRect());
+    console.log(window.pageXOffset, window.pageYOffset); //from top of window
+    console.log(
+        document.documentElement.clientHeight,
+        document.documentElement.clientWidth
+    );
+    // window.scrollTo(
+    //   s1coords.left + window.pageXOffset,
+    //  s1coords.top + window.pageYOffset
+    //);
+
+    // window.scrollTo({
+    //  left: s1coords.left + window.pageXOffset,
+    // top: s1coords.top + window.pageYOffset,
+    // behavior: 'smooth',
+    //});
+    section1.scrollIntoView({ behavior: 'smooth' });
+});
+/*document.querySelectorAll('.nav__link').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+        e.preventDefault();
+        const id = this.getAttribute('href');
+        console.log(id);
+        document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+    });
+});
+*/
+
+document.querySelector('.nav__links').addEventListener('click', function(e) {
+    e.preventDefault();
+
+    // Matching strategy
+    if (e.target.classList.contains('nav__link')) {
+        const id = e.target.getAttribute('href');
+        document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+    }
+});
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 console.log(document.documentElement);
 console.log(document.head);
 console.log(document.body);
@@ -113,28 +158,7 @@ logo.classList.contains('c'); // not includes
 // Don't use
 logo.clasName = 'jonas';
 
-btnScrollTo.addEventListener('click', function(e) {
-    const s1coords = section1.getBoundingClientRect();
-    console.log(s1coords); //form top of viewport
-    console.log(e.target.getBoundingClientRect());
-    console.log(window.pageXOffset, window.pageYOffset); //from top of window
-    console.log(
-        document.documentElement.clientHeight,
-        document.documentElement.clientWidth
-    );
-    // window.scrollTo(
-    //   s1coords.left + window.pageXOffset,
-    //  s1coords.top + window.pageYOffset
-    //);
-
-    // window.scrollTo({
-    //  left: s1coords.left + window.pageXOffset,
-    // top: s1coords.top + window.pageYOffset,
-    // behavior: 'smooth',
-    //});
-    section1.scrollIntoView({ behavior: 'smooth' });
-});
-const h1 = document.querySelector('h1');
+/*const h1 = document.querySelector('h1');
 const alertH1 = function(e) {
     alert('addeventlistener:hey hi:)');
 };
@@ -170,4 +194,4 @@ document.querySelector('.nav__links').addEventListener('click', function(e) {
 document.querySelector('.nav').addEventListener('click', function(e) {
     this.style.backgroundColor = randomColor();
     console.log('NAV', e.target, e.currentTarget);
-});
+});*/
