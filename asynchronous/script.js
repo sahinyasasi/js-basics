@@ -34,7 +34,7 @@ const countriesContainer = document.querySelector('.countries');
   getCountry('india');
   getCountry('portugal');*/
 
-const renderCountry = function (data, classname = '') {
+/*const renderCountry = function (data, classname = '') {
   const html = `<article class="country">
               <img class="country__img" src="${data.flag}" />
               <div class="country__data">
@@ -77,4 +77,6 @@ const getCountryAndNeighbour = function (country) {
     });
   });
 };
-getCountryAndNeighbour('usa');
+getCountryAndNeighbour('usa');*/
+const request = fetch('https://restcountries.eu/rest/v2/name/portugal');
+console.log(request);
