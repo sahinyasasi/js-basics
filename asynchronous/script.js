@@ -5,14 +5,14 @@ const countriesContainer = document.querySelector('.countries');
 
 ///////////////////////////////////////
 /*const getCountry = function (country) {
-    const request = new XMLHttpRequest();
-    request.open('GET', `https://restcountries.eu/rest/v2/name/${country}`);
-    request.send();
-    request.addEventListener('load', function () {
-      const [data] = JSON.parse(this.responseText);
-      console.log(data);
-  
-      const html = `<article class="country">
+  const request = new XMLHttpRequest();
+  request.open('GET', `https://restcountries.eu/rest/v2/name/${country}`);
+  request.send();
+  request.addEventListener('load', function () {
+    const [data] = JSON.parse(this.responseText);
+    console.log(data);
+
+    const html = `<article class="country">
             <img class="country__img" src="${data.flag}" />
             <div class="country__data">
               <h3 class="country__name">${data.name}</h3>
@@ -20,19 +20,21 @@ const countriesContainer = document.querySelector('.countries');
               <p class="country__row"><span>👫</span>${(
                 +data.population / 100000
               ).toFixed(1)}</p>
-              <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
+              <p class="country__row"><span>🗣️</span>${
+                data.languages[0].name
+              }</p>
               <p class="country__row"><span>💰</span>${
                 data.currencies[0].name
               }</p>
             </div>
           </article>`;
-      countriesContainer.insertAdjacentHTML('beforeend', html);
-      countriesContainer.style.opacity = 1;
-    });
-  };
-  getCountry('portugal');
-  getCountry('india');
-  getCountry('portugal');*/
+    countriesContainer.insertAdjacentHTML('beforeend', html);
+    countriesContainer.style.opacity = 1;
+  });
+};
+getCountry('portugal');
+getCountry('india');
+getCountry('portugal');*/
 
 /*const renderCountry = function (data, classname = '') {
   const html = `<article class="country">
@@ -78,7 +80,7 @@ const getCountryAndNeighbour = function (country) {
   });
 };
 getCountryAndNeighbour('usa');*/
-const renderCountry = function (data, classname = '') {
+/*const renderCountry = function (data, classname = '') {
   const html = `<article class="country">
                 <img class="country__img" src="${data.flag}" />
                 <div class="country__data">
@@ -97,7 +99,7 @@ const renderCountry = function (data, classname = '') {
               </article>`;
   countriesContainer.insertAdjacentHTML('beforeend', html);
   countriesContainer.style.opacity = 1;
-};
+};*/
 /*const request = fetch('https://restcountries.eu/rest/v2/name/portugal');
 console.log(request);
 const getCountry = function (country) {
@@ -195,7 +197,7 @@ const whereAmI = function () {
 };
 
 btn.addEventListener('click', whereAmI);*/
-const wait = function (seconds) {
+/*const wait = function (seconds) {
   return new Promise(function (resolve) {
     setTimeout(resolve, seconds * 1000);
   });
@@ -239,4 +241,32 @@ createImage('img/img-1.jpg')
   .then(() => {
     currentImg.style.display = 'none';
   })
-  .catch(err => console.error(err));
+  .catch(err => console.error(err));*/
+const renderCountry = function (data) {
+  const html = `<article class="country">
+                <img class="country__img" src="${data.flag}" />
+                <div class="country__data">
+                  <h3 class="country__name">${data.name}</h3>
+                  <h4 class="country__region">${data.region}</h4>
+                  <p class="country__row"><span>👫</span>${(
+                    +data.population / 100000
+                  ).toFixed(1)}</p>
+                  <p class="country__row"><span>🗣️</span>${
+                    data.languages[0].name
+                  }</p>
+                  <p class="country__row"><span>💰</span>${
+                    data.currencies[0].name
+                  }</p>
+                </div>
+              </article>`;
+  countriesContainer.insertAdjacentHTML('beforeend', html);
+  countriesContainer.style.opacity = 1;
+};
+
+const whereAmI = async function (country) {
+  const res = await fetch(`https://restcountries.eu/rest/v2/name/${country}`);
+  const data = await res.json();
+  console.log(data);
+  renderCountry(data[0]);
+};
+whereAmI('portugal');
