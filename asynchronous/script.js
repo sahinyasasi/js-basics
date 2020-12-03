@@ -425,7 +425,22 @@ const timeout = function (sec) {
 
 Promise.race([
   getJSON(`https://restcountries.eu/rest/v2/name/tanzania`),
+
   timeout(0.01),
 ])
   .then(res => console.log(res[0]))
+  .catch(err => console.error(err));
+
+Promise.allSettled([
+  Promise.resolve('Success'),
+  Promise.reject('ERROR'),
+  Promise.resolve('Another success'),
+]).then(res => console.log(res));
+
+Promise.all([
+  Promise.resolve('Success'),
+  Promise.reject('ERROR'),
+  Promise.resolve('Another success'),
+])
+  .then(res => console.log(res))
   .catch(err => console.error(err));
