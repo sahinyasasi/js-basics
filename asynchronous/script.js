@@ -113,27 +113,9 @@ const getCountry = function (country) {
       renderCountry(data[0]);
     });
 };*/
-/*const request = fetch('https://restcountries.eu/rest/v2/name/portugal');
-console.log(request);
-const getCountry = function (country) {
-  fetch(`https://restcountries.eu/rest/v2/name/${country}`)
-    .then(
-      response => response.json(),
-      err => alert(err)
-    )
-    .then(data => {
-      renderCountry(data[0]);
-      const neighbour = data[0].borders[0];
-      if (!neighbour) return;
-      return fetch(`https://restcountries.eu/rest/v2/alpha/${neighbour}`);
-    })
-    .then(response => response.json())
-    .then(data => renderCountry(data, 'neighbour'));
-};
+/*onst request = fetch('https://restcountries.eu/rest/v2/name/portugal');
+console.log(request);*/
 
-btn.addEventListener('click', function () {
-  getCountry('portugal');
-});*/
 /*console.log('Test start');
 setTimeout(() => console.log('0 sec timer'), 0);
 Promise.resolve('Resolved promise 1').then(res => console.log(res));
@@ -142,6 +124,8 @@ Promise.resolve('Resolved promise 2').then(res => {
   for (let i = 0; i < 1000000000; i++) {}
   console.log(res);
 });
+
+
 
 console.log('Test end');*/
 /*const lotteryPromise = new Promise(function (resolve, reject) {
@@ -415,7 +399,7 @@ get3Countries('portugal', 'canada', 'tanzania');*/
   console.log(res[0]);
 })();
 */
-const timeout = function (sec) {
+/*const timeout = function (sec) {
   return new Promise(function (_, reject) {
     setTimeout(function () {
       reject(new Error('Request took too long!'));
@@ -451,4 +435,27 @@ Promise.any([
   Promise.resolve('Another success'),
 ])
   .then(res => console.log(res))
-  .catch(err => console.error(err));
+  .catch(err => console.error(err));*/
+fetch('https://no-such-server.blabla') // rejects
+  .then(response => response.json())
+  .catch(err => alert(err));
+
+const getCountry = function (country) {
+  fetch(`https://restcountries.eu/rest/v2/name/${country}`)
+    .then(
+      response => response.json(),
+      err => alert(err)
+    )
+    .then(data => {
+      renderCountry(data[0]);
+      const neighbour = data[0].borders[0];
+      if (!neighbour) return;
+      return fetch(`https://restcountries.eu/rest/v2/alpha/${neighbour}`);
+    })
+    .then(response => response.json())
+    .then(data => renderCountry(data, 'neighbour'));
+};
+
+btn.addEventListener('click', function () {
+  getCountry('portugal');
+});
