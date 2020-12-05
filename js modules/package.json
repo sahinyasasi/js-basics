@@ -1,0 +1,22 @@
+{
+  "name": "js-modules",
+  "version": "1.0.0",
+  "main": "clean.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "leaflet": "^1.7.1",
+    "lodash-es": "^4.17.15"
+  },
+  "devDependencies": {
+    "parcel": "^1.12.4"
+  }
+}
