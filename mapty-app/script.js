@@ -15,8 +15,20 @@ navigator.geolocation.getCurrentPosition(
     //console.log(position);
     const { latitude } = position.coords;
     const { longitude } = position.coords;
+    const coords = [latitude, longitude];
     console.log(latitude, longitude);
     console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
+    var map = L.map('map').setView(coords, 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(map);
+
+    L.marker(coords)
+      .addTo(map)
+      .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+      .openPopup();
   },
   function () {
     alert('cant get the properties');
